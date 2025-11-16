@@ -1,20 +1,26 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
+
+import Control.ControladorBingo;
+import Juego.ModoManual;
 
 /**
  *
  * @author nazar
  */
 public class FrmVista extends javax.swing.JFrame {
+    private ControladorBingo controlador;
 
     /**
      * Creates new form FrmVista
      */
     public FrmVista() {
         initComponents();
+        controlador = new ControladorBingo(new ModoManual()); // o ModoAutomatico
+        
     }
 
     /**
@@ -26,21 +32,42 @@ public class FrmVista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        NumSalidos = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        NumSalidos.setText("Numeros Salidos");
+        NumSalidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumSalidosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(434, Short.MAX_VALUE)
+                .addComponent(NumSalidos)
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(NumSalidos)
+                .addContainerGap(358, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void NumSalidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumSalidosActionPerformed
+        
+        DlgNumSalidos NumSalidos = new DlgNumSalidos(this, true);
+        NumSalidos.setVisible(true);
+    }//GEN-LAST:event_NumSalidosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +105,6 @@ public class FrmVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton NumSalidos;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,7 +10,7 @@ package Tombola;
  */
 public class Tombola {
     private static Tombola instancia;  //única instancia
-    private boolean[] numerosSalidos;
+    public boolean[] numerosSalidos;
     private int ultimoNumero;
 
     private Tombola() {

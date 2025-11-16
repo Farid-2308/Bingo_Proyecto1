@@ -4,6 +4,8 @@
  */
 package Control;
 
+import Cartones.Carton;
+import Cartones.GestionCarton;
 import Juego.ModoJuego;
 import Tablero.Tablero;
 
@@ -14,10 +16,13 @@ import Tablero.Tablero;
 public class ControladorBingo {
     private ModoJuego modo;
     private Tablero  tablero;
+    private GestionCarton gestionCarton;
+    
 
     public ControladorBingo(ModoJuego modo) {
         this.modo = modo;
         tablero = new Tablero();
+        gestionCarton = new GestionCarton();
     }
     
   public int siguienteNumero() {
@@ -26,6 +31,10 @@ public class ControladorBingo {
             tablero.marcarNumeros(numero);
         }
         return numero;
+    }
+  
+  public Carton crearCarton() {
+    return gestionCarton.generarCarton();
     }
 
     public Tablero getTablero() {

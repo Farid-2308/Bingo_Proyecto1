@@ -31,4 +31,6 @@ public class ModoManual implements ModoJuego {
         return numero;
     } 
     
+    
+    
 }
