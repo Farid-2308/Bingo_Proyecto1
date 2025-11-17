@@ -10,29 +10,42 @@ import Excepciones.NumeroInvalidoException;
 import Ganar.TipoJuego;
 import Juego.ModoManual;
 import Tablero.Tablero;
+import java.awt.CardLayout;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author nazar
  */
 public class FrmVista extends javax.swing.JFrame {
-
+    private TipoJuego tipo;
     private controladorbingo controlador;
-
+    
     /**
      * Creates new form FrmVista
      */
     public FrmVista() {
         initComponents();
+        
+        MostrarItemCB();
         controlador = new controladorbingo();
 //            hay errores aqui 
 //        cbTipoJuego.setModel(new javax.swing.DefaultComboBoxModel<>(TipoJuego.values()));
         cbTipoJuego.setSelectedItem(TipoJuego.LINEA);
 //        controlador = new ControladorBingo(new ModoManual()); // o ModoAutomatico
     }
-
+    
+    public void MostrarItemCB(){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        for (TipoJuego tiposave : TipoJuego.values()) {
+            model.addElement(tiposave);
+        }
+        cbTipoJuego.setModel(model);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,16 +59,19 @@ public class FrmVista extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jCheckBox1 = new javax.swing.JCheckBox();
+        Actual_JPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtLog = new javax.swing.JTextArea();
+        txtNumeroManual = new javax.swing.JTextField();
+        lblUltimoNumero = new javax.swing.JLabel();
         NumSalidos = new javax.swing.JButton();
         cbTipoJuego = new javax.swing.JComboBox<>();
         btnSiguienteAuto = new javax.swing.JButton();
         btnRegistrarManual = new javax.swing.JButton();
         btnReiniciar = new javax.swing.JButton();
-        txtNumeroManual = new javax.swing.JTextField();
-        lblUltimoNumero = new javax.swing.JLabel();
-        txtIdCarton = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtLog = new javax.swing.JTextArea();
+        txtIdCarton = new javax.swing.JFormattedTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnCrearCartonAuto = new javax.swing.JMenuItem();
@@ -71,6 +87,14 @@ public class FrmVista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        txtLog.setColumns(20);
+        txtLog.setRows(5);
+        jScrollPane2.setViewportView(txtLog);
+
+        txtNumeroManual.setText("Numero Manual");
+
+        lblUltimoNumero.setText("ultimo Numero");
+
         NumSalidos.setText("Numeros Salidos");
         NumSalidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +102,6 @@ public class FrmVista extends javax.swing.JFrame {
             }
         });
 
-        cbTipoJuego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbTipoJuego.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTipoJuegoActionPerformed(evt);
@@ -96,15 +119,74 @@ public class FrmVista extends javax.swing.JFrame {
 
         btnReiniciar.setText("Reiniciar Partida");
 
-        txtNumeroManual.setText("Numero Manual");
+        txtIdCarton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdCartonActionPerformed(evt);
+            }
+        });
 
-        lblUltimoNumero.setText("ultimo Numero");
+        jTextField1.setText("IdCarton (0-99)");
 
-        txtIdCarton.setText("ID Carton");
+        jTextField2.setText("Modo de juego");
 
-        txtLog.setColumns(20);
-        txtLog.setRows(5);
-        jScrollPane2.setViewportView(txtLog);
+        javax.swing.GroupLayout Actual_JPanelLayout = new javax.swing.GroupLayout(Actual_JPanel);
+        Actual_JPanel.setLayout(Actual_JPanelLayout);
+        Actual_JPanelLayout.setHorizontalGroup(
+            Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Actual_JPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
+                .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Actual_JPanelLayout.createSequentialGroup()
+                        .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNumeroManual, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSiguienteAuto)
+                            .addComponent(btnRegistrarManual, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NumSalidos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(106, 106, 106))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Actual_JPanelLayout.createSequentialGroup()
+                        .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cbTipoJuego, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblUltimoNumero)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                            .addComponent(txtIdCarton))
+                        .addGap(28, 28, 28))))
+        );
+        Actual_JPanelLayout.setVerticalGroup(
+            Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Actual_JPanelLayout.createSequentialGroup()
+                .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Actual_JPanelLayout.createSequentialGroup()
+                        .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Actual_JPanelLayout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Actual_JPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtIdCarton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblUltimoNumero)
+                            .addComponent(cbTipoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addComponent(txtNumeroManual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSiguienteAuto)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnRegistrarManual)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnReiniciar)
+                        .addGap(12, 12, 12)
+                        .addComponent(NumSalidos)))
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
 
         jMenu1.setText("Carton");
 
@@ -127,54 +209,11 @@ public class FrmVista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbTipoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(txtIdCarton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(261, 261, 261)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblUltimoNumero)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnSiguienteAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnRegistrarManual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnReiniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(NumSalidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtNumeroManual)))))
-                .addGap(97, 97, 97))
+            .addComponent(Actual_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbTipoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIdCarton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblUltimoNumero)
-                        .addGap(18, 18, 18)))
-                .addComponent(txtNumeroManual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(btnSiguienteAuto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRegistrarManual)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnReiniciar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(NumSalidos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(95, Short.MAX_VALUE))
+            .addComponent(Actual_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -201,14 +240,14 @@ public class FrmVista extends javax.swing.JFrame {
         try {
             Carton c = controlador.CrearCartonAutomatico(id);
             txtLog.append("Se creó el cartón automático con ID: " + id + "\n");
-            // Si quieres, aquí luego llamas un método para mostrar el cartón en una JTable.
+            
         } catch (NumeroInvalidoException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnCrearCartonAutoActionPerformed
 
     private void btnSiguienteAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteAutoActionPerformed
-        int numero = controlador;
+/*        int numero = controlador;
 
         if (numero == -1) {
             JOptionPane.showMessageDialog(this, "Ya no hay más números en la tómbola");
@@ -227,8 +266,12 @@ public class FrmVista extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(this, msg.toString(), "Bingo", JOptionPane.INFORMATION_MESSAGE);
         }
-
+*/
     }//GEN-LAST:event_btnSiguienteAutoActionPerformed
+
+    private void txtIdCartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdCartonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdCartonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,6 +309,7 @@ public class FrmVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Actual_JPanel;
     private javax.swing.JButton NumSalidos;
     private javax.swing.JMenuItem btnCrearCartonAuto;
     private javax.swing.JButton btnRegistrarManual;
@@ -280,8 +324,10 @@ public class FrmVista extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblUltimoNumero;
-    private javax.swing.JTextField txtIdCarton;
+    private javax.swing.JFormattedTextField txtIdCarton;
     private javax.swing.JTextArea txtLog;
     private javax.swing.JTextField txtNumeroManual;
     // End of variables declaration//GEN-END:variables

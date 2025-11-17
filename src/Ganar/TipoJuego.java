@@ -9,7 +9,18 @@ package Ganar;
  * @author nazar
  */
 public enum TipoJuego {
-    LINEA,
-    CUATRO_ESQUINAS,
-    LLENO
+    LINEA("Linea"),
+    CUATRO_ESQUINAS("Cuatro_Esquinas"),
+    LLENO("LLeno");
+
+    private final String TipoJuego;
+
+    private TipoJuego(String TipoJuego) {
+        this.TipoJuego = TipoJuego;
+    }
+
+    public String getTipoJuego() {
+        return TipoJuego;
+    }
+
 }
