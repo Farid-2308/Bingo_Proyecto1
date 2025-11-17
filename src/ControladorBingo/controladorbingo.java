@@ -12,6 +12,7 @@ import Ganar.VerificarGanador;
 import Tablero_TombolaServicio.ServicioJuego;
 import java.util.HashSet;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -54,6 +55,7 @@ public class controladorbingo {
     }
 
     public List<Carton> obtenerGanadores() {
+        ImageIcon icono = new ImageIcon(getClass().getResource("/IMG/CelebrarPoP.png"));
         VerificarGanador verificar = new VerificarGanador();
         HashSet<Carton> cartones = serviciocarton.ObtenerTodos();
         switch (tipojuegoselec) {
