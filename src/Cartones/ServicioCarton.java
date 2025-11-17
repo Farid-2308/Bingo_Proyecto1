@@ -55,7 +55,19 @@ public class ServicioCarton {
     public void EliminarCartonEnHashMap(String id) {
         Carton c = gestion.BuscarPorId(id);
         if (c != null) {
-            gestion.Eliminar(c);
+            gestion.Eliminar(id);
+        }
+    }
+    
+    public void ReiniciarMarcasTodos(){
+        for(Carton c: gestion.ObtenerTodito()){
+            c.ReiniciarMarcas();
+        }
+    }
+    
+    public void MarcarTodos(int num){
+        for(Carton c: gestion.ObtenerTodito()){
+            c.MarcarNum(num);
         }
     }
 }

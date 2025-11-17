@@ -4,7 +4,6 @@
  */
 package Cartones;
 
-
 /**
  *
  * @author duvan
@@ -61,7 +60,7 @@ public class Carton {
     }
 
     public boolean ValidarLugarNum(int validando, int columna) { //Boolean: True=Está bien  False=Está mal
-        
+
         if (validando >= 1 && validando <= 15 && columna == 0) {
             return true;
         } else if (validando >= 16 && validando <= 30 && columna == 1) {
@@ -72,7 +71,7 @@ public class Carton {
             return true;
         } else if (validando >= 61 && validando <= 75 && columna == 4) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -148,7 +147,7 @@ public class Carton {
     public boolean Buscar(int NumBuscar) {
         for (int columnas = 0; columnas < 5; columnas++) {
             for (int filas = 0; filas < 5; filas++) {
-                if (NumBuscar == numeros[filas][columnas]) {
+                if (NumBuscar == this.numeros[filas][columnas]) {
                     return true;
                 }
             }
@@ -156,8 +155,23 @@ public class Carton {
         return false;
     }
 
-    public void MarcarNum(int filas, int columnas) {
-        this.marcar[filas][columnas] = true;
+    public void MarcarNum(int numeroSalido) {
+        for (int columnas = 0; columnas < 5; columnas++) {
+            for (int filas = 0; filas < 5; filas++) {
+                if (numeroSalido == this.numeros[filas][columnas]) {
+                    this.marcar[filas][columnas] = true;
+                    return;
+                }
+            }
+        }
     }
 
+    public void ReiniciarMarcas() {
+        for (int columnas = 0; columnas < 5; columnas++) {
+            for (int filas = 0; filas < 5; filas++) {
+                this.marcar[filas][columnas] = false;
+            }
+        }
+        this.marcar[2][2] = true;
+    }
 }

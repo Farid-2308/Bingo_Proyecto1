@@ -13,7 +13,7 @@ public class Tombola {
     public boolean[] numerosSalidos;
     private int ultimoNumero;
 
-    private Tombola() {
+    public Tombola() {
         this.numerosSalidos = new boolean[76];
     }
     
@@ -56,11 +56,10 @@ public class Tombola {
          return true;
      }
     
-     public int reinciar(int numero) {
+     public void reinciar() {
          for (int i = 1; i <= 75; i++) {
              numerosSalidos[i] = false;
          }
-         return ultimoNumero = 0;
      }
 
     public int getUltimoNumero() {

@@ -18,7 +18,7 @@ public class ControladorBingo {
 
     public ControladorBingo(ModoJuego modo) {
         this.modo = modo;
-        tablero = new Tablero();
+        tablero = Tablero.getInstancia();
     }
 
     public int siguienteNumero() {

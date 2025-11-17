@@ -10,9 +10,17 @@ package Tablero;
  */
 public class Tablero {
     private boolean[] numCantado;
+    private static Tablero instancia;
+    
+    public static Tablero getInstancia(){
+        if(instancia==null){
+            instancia=new Tablero();
+        }
+        return instancia;
+    }
     
     public Tablero() {
-        numCantado = new boolean[75];
+        numCantado = new boolean[76];
     }
 
     public boolean[] getNumCantado() {
