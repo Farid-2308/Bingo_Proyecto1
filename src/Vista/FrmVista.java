@@ -6,6 +6,7 @@ package Vista;
 
 import Control.ControladorBingo;
 import Juego.ModoManual;
+import Tablero.Tablero;
 
 /**
  *
@@ -13,13 +14,14 @@ import Juego.ModoManual;
  */
 public class FrmVista extends javax.swing.JFrame {
     private ControladorBingo controlador;
-
+    
+    
     /**
      * Creates new form FrmVista
      */
     public FrmVista() {
         initComponents();
-        controlador = new ControladorBingo(new ModoManual()); // o ModoAutomatico
+//        controlador = new ControladorBingo(new ModoManual()); // o ModoAutomatico
         
     }
 

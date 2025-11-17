@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import Tablero.Tablero;
+
 
 /**
  *
@@ -22,22 +24,6 @@ public class DlgNumSalidos extends javax.swing.JDialog {
         
     }
     
-public void mostrarVector(boolean[] vec) {
-    int num = 0;
-
-    for (int fila = 0; fila < 15; fila++) {
-        for (int col = 0; col < 5; col++) {
-
-            if (vec[num]) {
-                TblNumSalidos.setValueAt(num + 1, fila, col);
-            } else {
-                TblNumSalidos.setValueAt("", fila, col);
-            }
-
-            num++;
-        }
-    }
-}    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
