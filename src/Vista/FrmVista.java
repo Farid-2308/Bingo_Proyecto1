@@ -5,9 +5,11 @@
 package Vista;
 
 import Cartones.Carton;
+import Control.ControladorBingo;
 import ControladorBingo.controladorbingo;
 import Excepciones.NumeroInvalidoException;
 import Ganar.TipoJuego;
+import Juego.ModoAutomatico;
 import Juego.ModoManual;
 import Tablero.Tablero;
 import java.awt.CardLayout;
@@ -23,6 +25,7 @@ import javax.swing.JPanel;
 public class FrmVista extends javax.swing.JFrame {
     private TipoJuego tipo;
     private controladorbingo controlador;
+    private ControladorBingo Controlador;
     
     /**
      * Creates new form FrmVista
@@ -31,7 +34,8 @@ public class FrmVista extends javax.swing.JFrame {
         initComponents();
         
         MostrarItemCB();
-        controlador = new controladorbingo();
+        
+        controlador = new ControladorBingo();
 //            hay errores aqui 
 //        cbTipoJuego.setModel(new javax.swing.DefaultComboBoxModel<>(TipoJuego.values()));
         cbTipoJuego.setSelectedItem(TipoJuego.LINEA);
@@ -247,7 +251,7 @@ public class FrmVista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearCartonAutoActionPerformed
 
     private void btnSiguienteAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteAutoActionPerformed
-/*        int numero = controlador;
+        int numero = Controlador.siguienteNumero();
 
         if (numero == -1) {
             JOptionPane.showMessageDialog(this, "Ya no hay más números en la tómbola");
@@ -266,7 +270,7 @@ public class FrmVista extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(this, msg.toString(), "Bingo", JOptionPane.INFORMATION_MESSAGE);
         }
-*/
+
     }//GEN-LAST:event_btnSiguienteAutoActionPerformed
 
     private void txtIdCartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdCartonActionPerformed
