@@ -10,6 +10,7 @@ import ControladorBingo.controladorbingo;
 import Excepciones.NumeroInvalidoException;
 import Ganar.TipoJuego;
 import Juego.ModoAutomatico;
+import Juego.ModoJuego;
 import Juego.ModoManual;
 import Tablero.Tablero;
 import java.awt.CardLayout;
@@ -25,34 +26,44 @@ import javax.swing.JPanel;
  * @author nazar
  */
 public class FrmVista extends javax.swing.JFrame {
+
     private controladorbingo control;
     private TipoJuego tipo;
-    private controladorbingo controlador;
     private ControladorBingo Controlador;
-    
+
     /**
      * Creates new form FrmVista
      */
     public FrmVista() {
         initComponents();
-        control= new controladorbingo();
-        MostrarItemCB();
-        
-        controlador = new ControladorBingo();
+        control = new controladorbingo();
+        Mostrar1();
+        Mostrar2();
+
+        Controlador = new ControladorBingo((ModoJuego) cbModo.getSelectedItem());
 //            hay errores aqui 
 //        cbTipoJuego.setModel(new javax.swing.DefaultComboBoxModel<>(TipoJuego.values()));
         cbTipoJuego.setSelectedItem(TipoJuego.LINEA);
 //        controlador = new ControladorBingo(new ModoManual()); // o ModoAutomatico
     }
-    
-    public void MostrarItemCB(){
+
+    public void Mostrar1() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         for (TipoJuego tiposave : TipoJuego.values()) {
             model.addElement(tiposave);
         }
         cbTipoJuego.setModel(model);
+
     }
-    
+
+    public void Mostrar2() {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        for (ModoJuego modosave : ModoJuego.values()) {
+            model.addElement(modosave);
+        }
+        cbModo.setModel(model);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,6 +90,7 @@ public class FrmVista extends javax.swing.JFrame {
         txtIdCarton = new javax.swing.JFormattedTextField();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        cbModo = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnCrearCartonAuto = new javax.swing.JMenuItem();
@@ -144,7 +156,7 @@ public class FrmVista extends javax.swing.JFrame {
             Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Actual_JPanelLayout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                 .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Actual_JPanelLayout.createSequentialGroup()
                         .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,6 +167,8 @@ public class FrmVista extends javax.swing.JFrame {
                             .addComponent(NumSalidos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(106, 106, 106))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Actual_JPanelLayout.createSequentialGroup()
+                        .addComponent(cbModo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
                         .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(cbTipoJuego, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
@@ -183,8 +197,9 @@ public class FrmVista extends javax.swing.JFrame {
                         .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtIdCarton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblUltimoNumero)
-                            .addComponent(cbTipoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
+                            .addComponent(cbTipoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbModo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
                         .addComponent(txtNumeroManual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(btnSiguienteAuto)
@@ -194,7 +209,7 @@ public class FrmVista extends javax.swing.JFrame {
                         .addComponent(btnReiniciar)
                         .addGap(12, 12, 12)
                         .addComponent(NumSalidos)))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Carton");
@@ -236,7 +251,7 @@ public class FrmVista extends javax.swing.JFrame {
 
     private void cbTipoJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoJuegoActionPerformed
         TipoJuego tipo = (TipoJuego) cbTipoJuego.getSelectedItem();
-        controlador.setTipojuegoselec(tipo);
+        control.setTipojuegoselec(tipo);
 
     }//GEN-LAST:event_cbTipoJuegoActionPerformed
 
@@ -247,9 +262,9 @@ public class FrmVista extends javax.swing.JFrame {
             return;
         }
         try {
-            Carton c = controlador.CrearCartonAutomatico(id);
+            Carton c = control.CrearCartonAutomatico(id);
             txtLog.append("Se creó el cartón automático con ID: " + id + "\n");
-            
+
         } catch (NumeroInvalidoException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -264,7 +279,7 @@ public class FrmVista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearCartonAutoActionPerformed
 
     private void btnSiguienteAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteAutoActionPerformed
-        int numero = Controlador.siguienteNumero();
+        int numero = control.siguienteNumeroAuto();
 
         if (numero == -1) {
             JOptionPane.showMessageDialog(this, "Ya no hay más números en la tómbola");
@@ -272,10 +287,10 @@ public class FrmVista extends javax.swing.JFrame {
         }
 
         lblUltimoNumero.setText(String.valueOf(numero));
-        txtLog.append("Número automático cantado: " + numero + "\n");
-
+        txtLog.append("Salio el numero de manera automatica: " + numero);
+        control.getServiciocarton().MarcarTodos(numero);
         // Verificar ganadores
-        List<Carton> ganadores = controlador.obtenerGanadores();
+        List<Carton> ganadores = control.obtenerGanadores();
         if (!ganadores.isEmpty()) {
             StringBuilder msg = new StringBuilder("¡Hay ganador(es)!\n");
             for (Carton c : ganadores) {
@@ -332,6 +347,7 @@ public class FrmVista extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarManual;
     private javax.swing.JButton btnReiniciar;
     private javax.swing.JButton btnSiguienteAuto;
+    private javax.swing.JComboBox<String> cbModo;
     private javax.swing.JComboBox<String> cbTipoJuego;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JMenu jMenu1;

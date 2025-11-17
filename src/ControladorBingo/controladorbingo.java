@@ -9,6 +9,7 @@ import Cartones.ServicioCarton;
 import Excepciones.NumeroInvalidoException;
 import Ganar.TipoJuego;
 import Ganar.VerificarGanador;
+import Tablero.Tablero;
 import Tablero_TombolaServicio.ServicioJuego;
 import java.util.HashSet;
 import java.util.List;
@@ -24,6 +25,7 @@ public class controladorbingo {
     private final ServicioJuego serviciojuego;
     private final ServicioCarton serviciocarton;
     private TipoJuego tipojuegoselec;
+    private Tablero tablero;
 
     public controladorbingo() {
         this.serviciojuego = new ServicioJuego();
@@ -35,6 +37,16 @@ public class controladorbingo {
     public TipoJuego getTipojuegoselec() {
         return tipojuegoselec;
     }
+
+    public ServicioJuego getServiciojuego() {
+        return serviciojuego;
+    }
+
+    public ServicioCarton getServiciocarton() {
+        return serviciocarton;
+    }
+    
+    
 
     public void setTipojuegoselec(TipoJuego tipojuegoselec) {
         this.tipojuegoselec = tipojuegoselec;
@@ -87,6 +99,17 @@ public class controladorbingo {
         }
         return null;
     }
+    
+        public int siguienteNumeroM(int numero) {
+            if (numero != -1) {
+                tablero.marcarNumeros(numero);
+            }
+            return numero;
+        }
+        
+        public int siguienteNumeroAuto() {
+            return serviciojuego.getTomb().generarNumero();
+        }
     
     public boolean[] getNumerosSalidos() {
         return serviciojuego.getTomb().numerosSalidos;

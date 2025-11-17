@@ -10,14 +10,13 @@ import Tombola.Tombola;
  *
  * @author Farid
  */
-public class ModoAutomatico implements ModoJuego {
+public class ModoAutomatico {
     private Tombola tombola;
 
     public ModoAutomatico() {
         tombola = Tombola.getInstancia();
     }
 
-    @Override
     public int obtenerNumero() {
         int numero = tombola.generarNumero();
         return numero;

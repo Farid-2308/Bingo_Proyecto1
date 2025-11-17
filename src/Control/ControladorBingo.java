@@ -21,13 +21,6 @@ public class ControladorBingo {
         tablero = Tablero.getInstancia();
     }
 
-    public int siguienteNumero() {
-        int numero = modo.obtenerNumero();
-        if (numero != -1) {
-            tablero.marcarNumeros(numero);
-        }
-        return numero;
-    }
 
     public Tablero getTablero() {
         return tablero;
