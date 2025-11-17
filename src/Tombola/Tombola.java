@@ -23,6 +23,10 @@ public class Tombola {
         }
              return instancia;   
     }
+
+    public boolean[] getNumerosSalidos() {
+        return numerosSalidos;
+    }
     
     private boolean todosLosNumerosSalieron() {
         for (int i = 1; i <= 75; i++) {
@@ -53,7 +57,7 @@ public class Tombola {
      }
     
      public int reinciar(int numero) {
-         for (int i = 1; i < 75; i++) {
+         for (int i = 1; i <= 75; i++) {
              numerosSalidos[i] = false;
          }
          return ultimoNumero = 0;

@@ -12,7 +12,11 @@ public class Tablero {
     private boolean[] numCantado;
     
     public Tablero() {
-        numCantado = new boolean[76];
+        numCantado = new boolean[75];
+    }
+
+    public boolean[] getNumCantado() {
+        return numCantado;
     }
     
     public void marcarNumeros(int numero) {

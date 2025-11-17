@@ -9,7 +9,6 @@ package Ganar;
  * @author Farid
  */
 public class VerificarGanador {
-     // pendiente de implementación cuando exista el cartón
      public boolean verificarLineaHorizontal(boolean[][] marcados) {
          for (int fila = 0; fila < 5; fila++) {
             boolean lineaCompleta = true;
@@ -60,7 +59,7 @@ public class VerificarGanador {
                 if (!marcados[fila][col]) return false;
             }
         }
-        return false;
+        return true;
     }
     
     

@@ -20,7 +20,6 @@ public class ModoAutomatico implements ModoJuego {
     @Override
     public int obtenerNumero() {
         int numero = tombola.generarNumero();
-        System.out.println("Numero Cantado Automaticamente: " + numero);
         return numero;
     }
     
