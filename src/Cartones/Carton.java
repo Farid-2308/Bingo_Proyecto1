@@ -4,6 +4,7 @@
  */
 package Cartones;
 
+
 /**
  *
  * @author duvan
@@ -13,11 +14,6 @@ public class Carton {
     private String Id;
     private int[][] numeros;
     private boolean[][] marcar;
-
-    //LO QUE CREE ALLA ME PIDIO ESTO. TIRALE UNA OJEADA
-    Carton(int[][] matriz) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     public String getId() {
         return Id;
@@ -46,9 +42,6 @@ public class Carton {
         this.marcar[2][2] = true;//Se marca automaticamente el centro como libre
     }
 
-    
-    //HSY QUE MOVER ESTO YO CREO, PORQUE QUE ESTE EN CARTON ESTA DIFICIL MOVERLO A LA GUI
-    // NO SE SI VE A VER QUE PUEDE HACER     ;))))     :****
     public boolean LLenarManual(int Num) {
         if (Buscar(Num)) {
             return false;
@@ -68,6 +61,7 @@ public class Carton {
     }
 
     public boolean ValidarLugarNum(int validando, int columna) { //Boolean: True=Está bien  False=Está mal
+        
         if (validando >= 1 && validando <= 15 && columna == 0) {
             return true;
         } else if (validando >= 16 && validando <= 30 && columna == 1) {
@@ -78,8 +72,9 @@ public class Carton {
             return true;
         } else if (validando >= 61 && validando <= 75 && columna == 4) {
             return true;
+        }else{
+            return false;
         }
-        return false;
     }
 
     public void LlenarAuto() {

@@ -15,38 +15,14 @@ import java.util.Map;
  */
 public class GestionCarton {
     private Map<String,Carton> Cartones= new HashMap<>();
+    private static GestionCarton instancia;
     
-    // AGREGUE ESTO:
-    public Carton generarCarton() {
-        int[][] matriz = new int[5][5];
-
-        for (int col = 0; col < 5; col++) {
-            matriz[col] = generarColumna(col);
+    public static GestionCarton getInstancia(){
+        if(instancia == null){
+            instancia = new GestionCarton();
         }
-        return new Carton(matriz);
+        return instancia;
     }
-    
-    private int[] generarColumna(int columna) {
-        int inicio = columna * 15 + 1;
-        int fin = inicio + 14;
-
-        ArrayList<Integer> lista = new ArrayList<>();
-
-        for (int i = inicio; i <= fin; i++) {
-            lista.add(i);
-        }
-// REVIDE ESTO
-        Collections.shuffle(lista);
-
-        int[] numeros = new int[5];
-        for (int i = 0; i < 5; i++) {
-            numeros[i] = lista.get(i);
-        }
-
-        return numeros;
-    }
-    
-    //HASTA AQUI;
     
     public void Guardar(Carton c){
         Cartones.put(c.getId(), c);
@@ -59,8 +35,5 @@ public class GestionCarton {
     public Carton BuscarPorId(String id){
         return Cartones.get(id);
     }
-    
-    public Carton BuscarConCarton(Carton c){
-        return Cartones.get(c.getId());
-    }
+
 }

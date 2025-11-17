@@ -4,8 +4,6 @@
  */
 package Control;
 
-import Cartones.Carton;
-import Cartones.GestionCarton;
 import Juego.ModoJuego;
 import Tablero.Tablero;
 
@@ -14,35 +12,25 @@ import Tablero.Tablero;
  * @author Farid
  */
 public class ControladorBingo {
+
     private ModoJuego modo;
-    private Tablero  tablero;
-    private GestionCarton gestionCarton;
-    
+    private Tablero tablero;
 
     public ControladorBingo(ModoJuego modo) {
         this.modo = modo;
         tablero = new Tablero();
-        gestionCarton = new GestionCarton();
     }
-    
-  public int siguienteNumero() {
+
+    public int siguienteNumero() {
         int numero = modo.obtenerNumero();
         if (numero != -1) {
             tablero.marcarNumeros(numero);
         }
         return numero;
     }
-  
-  public Carton crearCarton() {
-    return gestionCarton.generarCarton();
-    }
 
     public Tablero getTablero() {
         return tablero;
     }
-        
-    }
-    
-    
-    
 
+}
