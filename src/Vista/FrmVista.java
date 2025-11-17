@@ -106,13 +106,22 @@ public class FrmVista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Actual_JPanel.setLayout(null);
+
         txtLog.setColumns(20);
         txtLog.setRows(5);
         jScrollPane2.setViewportView(txtLog);
 
+        Actual_JPanel.add(jScrollPane2);
+        jScrollPane2.setBounds(0, 0, 238, 248);
+
         txtNumeroManual.setText("Numero Manual");
+        Actual_JPanel.add(txtNumeroManual);
+        txtNumeroManual.setBounds(800, 150, 147, 26);
 
         lblUltimoNumero.setText("ultimo Numero");
+        Actual_JPanel.add(lblUltimoNumero);
+        lblUltimoNumero.setBounds(830, 90, 82, 16);
 
         NumSalidos.setText("Numeros Salidos");
         NumSalidos.addActionListener(new java.awt.event.ActionListener() {
@@ -120,12 +129,16 @@ public class FrmVista extends javax.swing.JFrame {
                 NumSalidosActionPerformed(evt);
             }
         });
+        Actual_JPanel.add(NumSalidos);
+        NumSalidos.setBounds(800, 310, 147, 27);
 
         cbTipoJuego.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTipoJuegoActionPerformed(evt);
             }
         });
+        Actual_JPanel.add(cbTipoJuego);
+        cbTipoJuego.setBounds(700, 80, 122, 34);
 
         btnSiguienteAuto.setText("SiguienteNum (Auto)");
         btnSiguienteAuto.addActionListener(new java.awt.event.ActionListener() {
@@ -133,84 +146,38 @@ public class FrmVista extends javax.swing.JFrame {
                 btnSiguienteAutoActionPerformed(evt);
             }
         });
+        Actual_JPanel.add(btnSiguienteAuto);
+        btnSiguienteAuto.setBounds(800, 190, 147, 27);
 
         btnRegistrarManual.setText("Registrar manual");
+        Actual_JPanel.add(btnRegistrarManual);
+        btnRegistrarManual.setBounds(800, 230, 147, 27);
 
         btnReiniciar.setText("Reiniciar Partida");
+        Actual_JPanel.add(btnReiniciar);
+        btnReiniciar.setBounds(800, 270, 147, 27);
 
+        txtIdCarton.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##"))));
         txtIdCarton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdCartonActionPerformed(evt);
             }
         });
+        Actual_JPanel.add(txtIdCarton);
+        txtIdCarton.setBounds(920, 80, 105, 34);
 
         jTextField1.setEditable(false);
         jTextField1.setText("IdCarton (0-99)");
+        Actual_JPanel.add(jTextField1);
+        jTextField1.setBounds(920, 40, 105, 26);
 
         jTextField2.setEditable(false);
         jTextField2.setText("Modo de juego");
+        Actual_JPanel.add(jTextField2);
+        jTextField2.setBounds(700, 40, 122, 26);
 
-        javax.swing.GroupLayout Actual_JPanelLayout = new javax.swing.GroupLayout(Actual_JPanel);
-        Actual_JPanel.setLayout(Actual_JPanelLayout);
-        Actual_JPanelLayout.setHorizontalGroup(
-            Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Actual_JPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
-                .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Actual_JPanelLayout.createSequentialGroup()
-                        .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNumeroManual, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSiguienteAuto)
-                            .addComponent(btnRegistrarManual, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NumSalidos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(106, 106, 106))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Actual_JPanelLayout.createSequentialGroup()
-                        .addComponent(cbModo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(cbTipoJuego, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUltimoNumero)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                            .addComponent(txtIdCarton))
-                        .addGap(28, 28, 28))))
-        );
-        Actual_JPanelLayout.setVerticalGroup(
-            Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Actual_JPanelLayout.createSequentialGroup()
-                .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Actual_JPanelLayout.createSequentialGroup()
-                        .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Actual_JPanelLayout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Actual_JPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtIdCarton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblUltimoNumero)
-                            .addComponent(cbTipoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbModo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addComponent(txtNumeroManual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnSiguienteAuto)
-                        .addGap(12, 12, 12)
-                        .addComponent(btnRegistrarManual)
-                        .addGap(12, 12, 12)
-                        .addComponent(btnReiniciar)
-                        .addGap(12, 12, 12)
-                        .addComponent(NumSalidos)))
-                .addContainerGap(99, Short.MAX_VALUE))
-        );
+        Actual_JPanel.add(cbModo);
+        cbModo.setBounds(570, 80, 102, 36);
 
         jMenu1.setText("Carton");
 
@@ -233,11 +200,11 @@ public class FrmVista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Actual_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Actual_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1144, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Actual_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Actual_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 685, Short.MAX_VALUE)
         );
 
         pack();
@@ -272,7 +239,7 @@ public class FrmVista extends javax.swing.JFrame {
         Actual_JPanel.add(CartonNew);
         CartonNew.setVisible(true);
         try {
-            CartonNew.CrearAuto(control.CrearCartonAutomatico(id).getNumeros());
+            CartonNew.CrearCarton(control.CrearCartonAutomatico(id).getNumeros());
         } catch (NumeroInvalidoException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -333,10 +300,8 @@ public class FrmVista extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmVista().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FrmVista().setVisible(true);
         });
     }
 

@@ -16,13 +16,21 @@ public class Bingo_InternalFrm extends javax.swing.JInternalFrame {
     public Bingo_InternalFrm() {
         initComponents();
     }
-
-    public void CrearAuto(int[][] numeros) {
+    
+    public void ObtenerNumAct(){
+        
+    }
+    
+    public void CrearCarton(int[][] numeros) {
         for (int col = 0; col < 5; col++) {
             for (int fila = 0; fila < 5; fila++) {
                 TblCarton.setValueAt(numeros[fila][col], fila, col);
             }
-        }
+        }      
+    }
+    
+    public void Marcar(){
+        
     }
 
     /**
@@ -36,7 +44,10 @@ public class Bingo_InternalFrm extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         TblCarton = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TblMarcar = new javax.swing.JTable();
 
+        TblCarton.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         TblCarton.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -57,22 +68,59 @@ public class Bingo_InternalFrm extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        TblCarton.setRowHeight(40);
         jScrollPane1.setViewportView(TblCarton);
+
+        TblMarcar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "B", "I", "N", "G", "O"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(TblMarcar);
+        if (TblMarcar.getColumnModel().getColumnCount() > 0) {
+            TblMarcar.getColumnModel().getColumn(0).setResizable(false);
+            TblMarcar.getColumnModel().getColumn(1).setResizable(false);
+            TblMarcar.getColumnModel().getColumn(2).setResizable(false);
+            TblMarcar.getColumnModel().getColumn(3).setResizable(false);
+            TblMarcar.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
         );
 
         pack();
@@ -81,6 +129,8 @@ public class Bingo_InternalFrm extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TblCarton;
+    private javax.swing.JTable TblMarcar;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
