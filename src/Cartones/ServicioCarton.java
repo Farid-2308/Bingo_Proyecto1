@@ -5,6 +5,7 @@
 package Cartones;
 
 import Excepciones.NumeroInvalidoException;
+import java.util.HashSet;
 
 /**
  *
@@ -69,5 +70,9 @@ public class ServicioCarton {
         for(Carton c: gestion.ObtenerTodito()){
             c.MarcarNum(num);
         }
+    }
+    
+    public HashSet<Carton> ObtenerTodos(){
+       return gestion.ObtenerTodito();
     }
 }

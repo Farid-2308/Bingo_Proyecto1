@@ -25,6 +25,12 @@ public class ServicioJuego {
     public Tablero getTabl() {
         return tabl;
     }
+
+    public Tombola getTomb() {
+        return tomb;
+    }
+    
+    
     
     public int SiguienteAutomatico() {
         int num=tomb.generarNumero();
