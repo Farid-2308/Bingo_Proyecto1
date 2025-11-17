@@ -14,6 +14,8 @@ import Juego.ModoManual;
 import Tablero.Tablero;
 import java.awt.CardLayout;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,6 +25,7 @@ import javax.swing.JPanel;
  * @author nazar
  */
 public class FrmVista extends javax.swing.JFrame {
+    private controladorbingo control;
     private TipoJuego tipo;
     private controladorbingo controlador;
     private ControladorBingo Controlador;
@@ -32,7 +35,7 @@ public class FrmVista extends javax.swing.JFrame {
      */
     public FrmVista() {
         initComponents();
-        
+        control= new controladorbingo();
         MostrarItemCB();
         
         controlador = new ControladorBingo();
@@ -129,8 +132,10 @@ public class FrmVista extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.setEditable(false);
         jTextField1.setText("IdCarton (0-99)");
 
+        jTextField2.setEditable(false);
         jTextField2.setText("Modo de juego");
 
         javax.swing.GroupLayout Actual_JPanelLayout = new javax.swing.GroupLayout(Actual_JPanel);
@@ -139,7 +144,7 @@ public class FrmVista extends javax.swing.JFrame {
             Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Actual_JPanelLayout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
                 .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Actual_JPanelLayout.createSequentialGroup()
                         .addGroup(Actual_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +186,7 @@ public class FrmVista extends javax.swing.JFrame {
                             .addComponent(cbTipoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)
                         .addComponent(txtNumeroManual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addComponent(btnSiguienteAuto)
                         .addGap(12, 12, 12)
                         .addComponent(btnRegistrarManual)
@@ -189,7 +194,7 @@ public class FrmVista extends javax.swing.JFrame {
                         .addComponent(btnReiniciar)
                         .addGap(12, 12, 12)
                         .addComponent(NumSalidos)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Carton");
@@ -245,6 +250,14 @@ public class FrmVista extends javax.swing.JFrame {
             Carton c = controlador.CrearCartonAutomatico(id);
             txtLog.append("Se creó el cartón automático con ID: " + id + "\n");
             
+        } catch (NumeroInvalidoException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        Bingo_InternalFrm CartonNew = new Bingo_InternalFrm();
+        Actual_JPanel.add(CartonNew);
+        CartonNew.setVisible(true);
+        try {
+            CartonNew.CrearAuto(control.CrearCartonAutomatico(id).getNumeros());
         } catch (NumeroInvalidoException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
