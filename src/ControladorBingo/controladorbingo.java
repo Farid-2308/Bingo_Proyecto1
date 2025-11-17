@@ -91,5 +91,7 @@ public class controladorbingo {
     public boolean[] getNumerosSalidos() {
         return serviciojuego.getTomb().numerosSalidos;
     }
+
+    
     
 }
